@@ -1,38 +1,21 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-
-        int t = Integer.parseInt(br.readLine());
-
-        while (t-- > 0) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            long y = Long.parseLong(st.nextToken());
-            long x = Long.parseLong(st.nextToken());
-            long result;
-
-            if (y >= x) {
-                if (y % 2 == 0) {
-                    result = y * y - (x - 1);
-                } else {
-                    result = (y - 1) * (y - 1) + x;
-                }
-            } else {
-                if (x % 2 == 0) {
-                    result = (x - 1) * (x - 1) + y;
-                } else {
-                    result = x * x - (y - 1);
-                }
-            }
-
-            sb.append(result).append("\n");
+//Your task is to calculate the number of bit strings of length n.
+//For example, if n=3, the correct answer is 8, because the possible bit strings are
+// 000, 001, 010, 011, 100, 101, 110, and 111.
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        final int MOD = 1000000007;
+        int n = s.nextInt();
+        if(n==1){
+            System.out.println(2);
+            return;
         }
-
-        System.out.print(sb);
+        int res = 1;
+        while(n>=1){
+            res = (res * 2)%MOD;
+            n--;
+        }
+        System.out.print(res);
     }
 }
